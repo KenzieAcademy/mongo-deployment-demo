@@ -35,18 +35,19 @@ function checkAuth(req, res, next) {
   // check if a user is authenticated
   // if yes, then call next()
   // if no, return a 401 status
-  try {
-    const token = req.headers.authorization?.slice(7) || ''
-    var decoded = jwt.verify(token, secret);
-    console.log(decoded)
-    if (decoded) {
-      next()
-    } else {
-      res.sendStatus(401)
-    }
-  } catch(err) {
-    res.status(401).send(err.message)
-  }
+  next()
+  // try {
+  //   const token = req.headers.authorization?.slice(7) || ''
+  //   var decoded = jwt.verify(token, secret);
+  //   console.log(decoded)
+  //   if (decoded) {
+  //     next()
+  //   } else {
+  //     res.sendStatus(401)
+  //   }
+  // } catch(err) {
+  //   res.status(401).send(err.message)
+  // }
 }
 
 // api
